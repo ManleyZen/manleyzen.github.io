@@ -2,3 +2,4 @@ baseURL = 'https://manleyzen.github.io/'
 languageCode = 'zh-cn'
 title = 'My New Hugo Site'
 theme = "ananke"
+publishDir = 'docs'  # 指定输出目录为 docs（替代默认的 public/）
