@@ -1,30 +1,22 @@
-name: Deploy Hugo
+name: Deploy to GitHub Pages
 on:
   push:
-    branches: [main]  # 监听 main 分支的推送
+    branches: [ main ]
 jobs:
-  deploy:
-    runs-on: ubuntu-latest  # 使用 GitHub 的 Ubuntu 虚拟机
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
-      # 拉取代码（包含主题子模块）
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          submodules: true  # 关键！确保主题子模块被拉取
-
-      # 安装 Hugo
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "latest"
-
-      # 构建静态网站
-      - name: Build
-        run: hugo -D --minify  # --minify 压缩输出文件
-
-      # 部署到 GitHub Pages
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动使用 GitHub 令牌
-          publish_dir: ./docs  # 与 publishDir 配置一致
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: "latest"
+    - name: Build
+      run: hugo --minify
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
