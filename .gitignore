@@ -1,0 +1,56 @@
+# 显式保留 .gitignore 和 .gitmodules（即使有 .* 规则）
+!.gitignore
+!.gitmodules
+
+# 构建输出目录（默认 public，可按需修改）
+/public/
+/resources/_gen/
+/assets/css/
+/assets/js/
+
+# 环境相关
+.env
+*.env
+
+# 编辑器/IDE 临时文件
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 操作系统临时文件
+*~
+*.bak
+*.tmp
+
+# 日志和调试文件
+*.log
+
+# 依赖管理（如使用 npm/yarn）
+node_modules/
+package-lock.json
+yarn.lock
+
+# Hugo 扩展模块缓存（Hugo Modules）
+/go.mod
+/go.sum
+/modules/
+
+# 本地开发配置（可选，若使用 config/development 等）
+/config/_default/params.local.toml
+/config/development/
+
+# 避免提交主题子模块（如果主题是 git submodule，可不忽略）
+# themes/your-theme-name/
+
+# 如果主题是作为子模块或外部引用，可保留 themes/，但忽略内部 .git
+/themes/*/.git
+
+# 临时草稿或未发布内容（可选）
+# content/drafts/
+
+# macOS 特有
+._*
+.github/workflows/gh-pages-backup.yml
