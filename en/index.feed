@@ -1,0 +1,16 @@
+{
+    "version" : "https://jsonfeed.org/version/1.1",
+    "title" : "ManleyZen 禅悦书房",
+    "description": "The official documentation for the Hugo DoIt theme",
+    "home_page_url" : "https://manleyzen.github.io/",
+    "feed_url" : "https://manleyzen.github.io/en/index.feed",
+    "icon" : "https://manleyzen.github.io/apple-touch-icon.png",
+    "favicon" : "https://manleyzen.github.io/favicon.ico",
+    "author" : {
+        "name" : "ManleyZen",
+        "url": "https://manleyzen.github.io/",
+        "avatar": "https://manleyzen.github.io/images/avatar.webp"
+    },
+    "items" : [
+    ]
+}
