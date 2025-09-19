@@ -6,9 +6,9 @@ on:
       - main
 
 permissions:
-  contents: write  # ✅ 关键修改：允许写入分支（如 gh-pages）
-  pages: write
-  id-token: write
+  contents: write  # 允许写入内容（包括 gh-pages 分支）
+  pages: write     # 允许写入 GitHub Pages
+  id-token: write  # 允许写入 ID token
 
 concurrency:
   group: "pages"
@@ -33,17 +33,23 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages  # ✅ 明确指定，避免歧义
-
-      - name: Download Twikoo (Optional Post-Deploy)
+      # 提前下载 Twikoo（在构建之后，部署之前）
+      - name: Download Twikoo
         run: |
           mkdir -p ./themes/DoIt/assets/lib/twikoo/
           curl -L https://cdn.jsdelivr.net/npm/twikoo@1.6.20/dist/twikoo.all.min.js \
             -o ./themes/DoIt/assets/lib/twikoo/twikoo.all.min.js
+        # 可选：重新构建以包含 Twikoo
+        # run: hugo --minify
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          # ✅ 改用 GITHUB_TOKEN（推荐）
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+          force_orphan: true
