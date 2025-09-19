@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write  # ✅ 关键修改：允许写入分支（如 gh-pages）
   pages: write
   id-token: write
 
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true  # ← 关键！拉取子模块
+          submodules: true
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -33,15 +33,17 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ./public
+          publish_branch: gh-pages  # ✅ 明确指定，避免歧义
 
-      - name: Download Twikoo
+      - name: Download Twikoo (Optional Post-Deploy)
         run: |
           mkdir -p ./themes/DoIt/assets/lib/twikoo/
           curl -L https://cdn.jsdelivr.net/npm/twikoo@1.6.20/dist/twikoo.all.min.js \
-            -o ./themes/DoIt/assets/lib/twikoo/twikoo.all.min.js          
+            -o ./themes/DoIt/assets/lib/twikoo/twikoo.all.min.js
