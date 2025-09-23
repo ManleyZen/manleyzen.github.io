@@ -1,0 +1,59 @@
+{{/* 
+  render-image.html
+  优先级：单个图片 > 文章级 > 全局
+*/}}
+
+{{/* 读取全局配置 */}}
+{{ $globalCaption := site.Params.imageCaption | default false }}
+
+{{/* 读取文章级配置 */}}
+{{ $pageCaption := .Page.Params.imageCaption | default $globalCaption }}
+
+{{/* 单个图片级配置：通过 alt 中的后缀（如 Alt_text?caption=true/false）解析 */}}
+{{ $text := .PlainText }}
+{{ $hasCaptionParam := false }}
+{{ $realAlt := $text }}
+{{ $singleCaption := "" }}
+
+{{/* 解析 $text 中的 ?caption 参数 */}}
+{{ $parts := split $text "?" }}
+{{ if gt (len $parts) 1 }}
+  {{ $realAlt = index $parts 0 }}
+  {{ $query := index $parts 1 }}
+  {{ $qparts := split $query "&" }}
+  {{ range $qparts }}
+    {{ $kv := split . "=" }}
+    {{ if eq (len $kv) 2 }}
+      {{ if eq (index $kv 0) "caption" }}
+        {{ $hasCaptionParam = true }}
+        {{ $val := index $kv 1 }}
+        {{ if eq $val "true" }}
+          {{ $singleCaption = $realAlt }}
+        {{ else if eq $val "false" }}
+          {{ $singleCaption = "" }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* 决定最终是否显示 caption */}}
+{{ $finalCaption := "" }}
+
+{{ if $hasCaptionParam }}
+  {{/* 单个图片参数优先 */}}
+  {{ $finalCaption = $singleCaption }}
+{{ else if $pageCaption }}
+  {{ $finalCaption = $realAlt }}
+{{ else if $globalCaption }}
+  {{ $finalCaption = $realAlt }}
+{{ end }}
+
+{{ if $finalCaption }}
+<figure>
+  <img src="{{ .Destination | safeURL }}" alt="{{ $realAlt }}" loading="lazy">
+  <figcaption>{{ $finalCaption | markdownify }}</figcaption>
+</figure>
+{{ else }}
+<img src="{{ .Destination | safeURL }}" alt="{{ $realAlt }}" loading="lazy">
+{{ end }}

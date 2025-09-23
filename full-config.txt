@@ -1,0 +1,870 @@
+archetypedir = 'archetypes'
+assetdir = 'assets'
+baseurl = 'http://localhost:1313'
+cachedir = '/Users/perot/Library/Caches/hugo_cache'
+capitalizelisttitles = true
+contentdir = 'content'
+copyright = 'This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.'
+datadir = 'data'
+defaultcontentlanguage = 'zh-cn'
+defaultoutputformat = 'html'
+enableemoji = true
+enablegitinfo = true
+enablerobotstxt = true
+environment = 'production'
+hascjklanguage = true
+i18ndir = 'i18n'
+ignorelogs = ['error-remote-getjson', 'error-missing-instagram-accesstoken']
+languagecode = 'zh-CN'
+layoutdir = 'layouts'
+pluralizelisttitles = true
+publishdir = 'public'
+resourcedir = 'resources'
+staticdir = ['static']
+summarylength = 70
+theme = ['LoveIt']
+themesdir = 'themes'
+timeout = '30s'
+title = 'ManleyZen 禅悦书房'
+titlecasestyle = 'AP'
+workingdir = '/Users/perot/Documents/1900—程序设计/manleyblog'
+
+[author]
+
+[build]
+  useresourcecachewhen = 'fallback'
+
+  [build.buildstats]
+
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = '(css|styles|scss|sass)'
+
+[caches]
+  [caches.assets]
+    dir = ':resourceDir/_gen'
+    maxage = -1
+
+  [caches.getcsv]
+    dir = ':cacheDir/:project'
+    maxage = -1
+
+  [caches.getjson]
+    dir = ':cacheDir/:project'
+    maxage = -1
+
+  [caches.getresource]
+    dir = ':cacheDir/:project'
+    maxage = -1
+
+  [caches.images]
+    dir = ':resourceDir/_gen'
+    maxage = -1
+
+  [caches.misc]
+    dir = ':cacheDir/:project'
+    maxage = -1
+
+  [caches.modules]
+    dir = ':cacheDir/modules'
+    maxage = -1
+
+[contenttypes]
+  [contenttypes.'text/asciidoc']
+
+  [contenttypes.'text/html']
+
+  [contenttypes.'text/markdown']
+
+  [contenttypes.'text/org']
+
+  [contenttypes.'text/pandoc']
+
+  [contenttypes.'text/rst']
+
+[deployment]
+  invalidatecdn = true
+  maxdeletes = 256
+  workers = 10
+
+[frontmatter]
+  date = ['date', 'publishdate', 'pubdate', 'published', 'lastmod', 'modified']
+  expirydate = ['expirydate', 'unpublishdate']
+  lastmod = [':git', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
+  publishdate = ['publishdate', 'pubdate', 'published', 'date']
+
+[httpcache]
+  [httpcache.cache]
+    [httpcache.cache.for]
+      excludes = ['**']
+
+  [[httpcache.polls]]
+    disable = true
+    high = '0s'
+    low = '0s'
+
+    [httpcache.polls.for]
+      includes = ['**']
+
+[imaging]
+  bgcolor = '#ffffff'
+  hint = 'photo'
+  quality = 75
+  resamplefilter = 'box'
+
+[languages]
+  [languages.zh-cn]
+    languagecode = 'zh-CN'
+    languagename = '简体中文'
+    weight = 1
+
+[markup]
+  defaultmarkdownhandler = 'goldmark'
+
+  [markup.asciidocext]
+    backend = 'html5'
+    failurelevel = 'fatal'
+    noheaderorfooter = true
+    safemode = 'unsafe'
+
+    [markup.asciidocext.attributes]
+
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionlist = true
+      footnote = true
+      linkify = true
+      linkifyprotocol = 'https'
+      strikethrough = true
+      table = true
+      tasklist = true
+
+      [markup.goldmark.extensions.cjk]
+        eastasianlinebreaksstyle = 'simple'
+
+      [markup.goldmark.extensions.extras]
+        [markup.goldmark.extensions.extras.delete]
+
+        [markup.goldmark.extensions.extras.insert]
+
+        [markup.goldmark.extensions.extras.mark]
+          enable = true
+
+        [markup.goldmark.extensions.extras.subscript]
+
+        [markup.goldmark.extensions.extras.superscript]
+
+      [markup.goldmark.extensions.passthrough]
+        [markup.goldmark.extensions.passthrough.delimiters]
+
+      [markup.goldmark.extensions.typographer]
+        apostrophe = '&rsquo;'
+        ellipsis = '&hellip;'
+        emdash = '&mdash;'
+        endash = '&ndash;'
+        leftanglequote = '&laquo;'
+        leftdoublequote = '&ldquo;'
+        leftsinglequote = '&lsquo;'
+        rightanglequote = '&raquo;'
+        rightdoublequote = '&rdquo;'
+        rightsinglequote = '&rsquo;'
+
+    [markup.goldmark.parser]
+      autoheadingid = true
+      autoidtype = 'github'
+
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
+
+    [markup.goldmark.renderer]
+      unsafe = true
+
+    [markup.goldmark.renderhooks]
+      [markup.goldmark.renderhooks.image]
+        enabledefault = true
+
+      [markup.goldmark.renderhooks.link]
+        enabledefault = true
+
+  [markup.highlight]
+    codefences = true
+    linenostart = 1
+    linenumbersintable = true
+    noclasses = true
+    style = 'monokai'
+    tabwidth = 4
+    wrapperclass = 'highlight'
+
+  [markup.tableofcontents]
+    endlevel = 6
+    startlevel = 2
+
+[mediatypes]
+  [mediatypes.'application/json']
+    delimiter = '.'
+    suffixes = ['json']
+
+  [mediatypes.'application/manifest+json']
+    delimiter = '.'
+    suffixes = ['webmanifest']
+
+  [mediatypes.'application/octet-stream']
+    delimiter = '.'
+
+  [mediatypes.'application/pdf']
+    delimiter = '.'
+    suffixes = ['pdf']
+
+  [mediatypes.'application/rss+xml']
+    delimiter = '.'
+    suffixes = ['xml', 'rss']
+
+  [mediatypes.'application/toml']
+    delimiter = '.'
+    suffixes = ['toml']
+
+  [mediatypes.'application/wasm']
+    delimiter = '.'
+    suffixes = ['wasm']
+
+  [mediatypes.'application/xml']
+    delimiter = '.'
+    suffixes = ['xml']
+
+  [mediatypes.'application/yaml']
+    delimiter = '.'
+    suffixes = ['yaml', 'yml']
+
+  [mediatypes.'font/otf']
+    delimiter = '.'
+    suffixes = ['otf']
+
+  [mediatypes.'font/ttf']
+    delimiter = '.'
+    suffixes = ['ttf']
+
+  [mediatypes.'image/bmp']
+    delimiter = '.'
+    suffixes = ['bmp']
+
+  [mediatypes.'image/gif']
+    delimiter = '.'
+    suffixes = ['gif']
+
+  [mediatypes.'image/jpeg']
+    delimiter = '.'
+    suffixes = ['jpg', 'jpeg', 'jpe', 'jif', 'jfif']
+
+  [mediatypes.'image/png']
+    delimiter = '.'
+    suffixes = ['png']
+
+  [mediatypes.'image/svg+xml']
+    delimiter = '.'
+    suffixes = ['svg']
+
+  [mediatypes.'image/tiff']
+    delimiter = '.'
+    suffixes = ['tif', 'tiff']
+
+  [mediatypes.'image/webp']
+    delimiter = '.'
+    suffixes = ['webp']
+
+  [mediatypes.'text/asciidoc']
+    delimiter = '.'
+    suffixes = ['adoc', 'asciidoc', 'ad']
+
+  [mediatypes.'text/calendar']
+    delimiter = '.'
+    suffixes = ['ics']
+
+  [mediatypes.'text/css']
+    delimiter = '.'
+    suffixes = ['css']
+
+  [mediatypes.'text/csv']
+    delimiter = '.'
+    suffixes = ['csv']
+
+  [mediatypes.'text/html']
+    delimiter = '.'
+    suffixes = ['html', 'htm']
+
+  [mediatypes.'text/javascript']
+    delimiter = '.'
+    suffixes = ['js', 'jsm', 'mjs']
+
+  [mediatypes.'text/jsx']
+    delimiter = '.'
+    suffixes = ['jsx']
+
+  [mediatypes.'text/markdown']
+    delimiter = '.'
+    suffixes = ['md', 'mdown', 'markdown']
+
+  [mediatypes.'text/org']
+    delimiter = '.'
+    suffixes = ['org']
+
+  [mediatypes.'text/pandoc']
+    delimiter = '.'
+    suffixes = ['pandoc', 'pdc']
+
+  [mediatypes.'text/plain']
+    suffixes = ['md']
+
+  [mediatypes.'text/rst']
+    delimiter = '.'
+    suffixes = ['rst']
+
+  [mediatypes.'text/tsx']
+    delimiter = '.'
+    suffixes = ['tsx']
+
+  [mediatypes.'text/typescript']
+    delimiter = '.'
+    suffixes = ['ts']
+
+  [mediatypes.'text/x-sass']
+    delimiter = '.'
+    suffixes = ['sass']
+
+  [mediatypes.'text/x-scss']
+    delimiter = '.'
+    suffixes = ['scss']
+
+  [mediatypes.'video/3gpp']
+    delimiter = '.'
+    suffixes = ['3gpp', '3gp']
+
+  [mediatypes.'video/mp4']
+    delimiter = '.'
+    suffixes = ['mp4']
+
+  [mediatypes.'video/mpeg']
+    delimiter = '.'
+    suffixes = ['mpg', 'mpeg']
+
+  [mediatypes.'video/ogg']
+    delimiter = '.'
+    suffixes = ['ogv']
+
+  [mediatypes.'video/webm']
+    delimiter = '.'
+    suffixes = ['webm']
+
+  [mediatypes.'video/x-msvideo']
+    delimiter = '.'
+    suffixes = ['avi']
+
+[menus]
+  [[menus.main]]
+    identifier = 'posts'
+    name = '时间轴'
+    url = '/posts/'
+    weight = 1
+
+  [[menus.main]]
+    identifier = 'categories'
+    name = '分类'
+    url = '/categories/'
+    weight = 2
+
+  [[menus.main]]
+    identifier = 'documentation'
+    name = '文档'
+    url = '/categories/documentation/'
+    weight = 3
+
+  [[menus.main]]
+    identifier = 'authors'
+    name = '作者'
+    url = '/authors/'
+    weight = 4
+
+  [[menus.main]]
+    identifier = 'tags'
+    name = '标签'
+    url = '/tags/'
+    weight = 5
+
+  [[menus.main]]
+    identifier = 'about'
+    name = '关于'
+    url = '/about/'
+    weight = 6
+
+  [[menus.main]]
+    identifier = 'github'
+    pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
+    title = 'GitHub'
+    url = 'https://github.com/dillonzq/LoveIt'
+    weight = 7
+
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+      keepcss2 = true
+
+    [minify.tdewolff.html]
+      keepdefaultattrvals = true
+      keepdocumenttags = true
+      keependtags = true
+      keepspecialcomments = true
+      templatedelims = ['', '']
+
+    [minify.tdewolff.js]
+      version = 2022
+
+    [minify.tdewolff.json]
+
+    [minify.tdewolff.svg]
+
+    [minify.tdewolff.xml]
+
+[module]
+  noproxy = 'none'
+  private = '*.*'
+  proxy = 'direct'
+  workspace = 'off'
+
+  [module.hugoversion]
+
+  [[module.imports]]
+    path = 'LoveIt'
+
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+
+  [[module.mounts]]
+    source = 'data'
+    target = 'data'
+
+  [[module.mounts]]
+    source = 'layouts'
+    target = 'layouts'
+
+  [[module.mounts]]
+    source = 'i18n'
+    target = 'i18n'
+
+  [[module.mounts]]
+    source = 'archetypes'
+    target = 'archetypes'
+
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+
+[outputformats]
+  [outputformats.algolia]
+    basename = 'algolia'
+    isplaintext = true
+    mediatype = 'application/json'
+    notalternative = true
+    rel = 'alternate'
+
+  [outputformats.amp]
+    basename = 'index'
+    ishtml = true
+    mediatype = 'text/html'
+    path = 'amp'
+    permalinkable = true
+    rel = 'amphtml'
+
+  [outputformats.calendar]
+    basename = 'index'
+    isplaintext = true
+    mediatype = 'text/calendar'
+    protocol = 'webcal://'
+    rel = 'alternate'
+
+  [outputformats.css]
+    basename = 'styles'
+    isplaintext = true
+    mediatype = 'text/css'
+    notalternative = true
+    rel = 'stylesheet'
+
+  [outputformats.csv]
+    basename = 'index'
+    isplaintext = true
+    mediatype = 'text/csv'
+    rel = 'alternate'
+
+  [outputformats.html]
+    basename = 'index'
+    ishtml = true
+    mediatype = 'text/html'
+    permalinkable = true
+    rel = 'canonical'
+    weight = 10
+
+  [outputformats.json]
+    basename = 'index'
+    isplaintext = true
+    mediatype = 'application/json'
+    rel = 'alternate'
+
+  [outputformats.markdown]
+    basename = 'index'
+    isplaintext = true
+    mediatype = 'text/plain'
+    rel = 'alternate'
+
+  [outputformats.robots]
+    basename = 'robots'
+    isplaintext = true
+    mediatype = 'text/plain'
+    rel = 'alternate'
+    root = true
+
+  [outputformats.rss]
+    basename = 'index'
+    mediatype = 'application/rss+xml'
+    nougly = true
+    rel = 'alternate'
+
+  [outputformats.sitemap]
+    basename = 'sitemap'
+    mediatype = 'application/xml'
+    rel = 'sitemap'
+    ugly = true
+
+  [outputformats.webappmanifest]
+    basename = 'manifest'
+    isplaintext = true
+    mediatype = 'application/manifest+json'
+    notalternative = true
+    rel = 'manifest'
+
+[outputs]
+  home = ['html', 'rss', 'json', 'algolia']
+  page = ['html', 'markdown']
+  rss = ['rss']
+  section = ['html', 'rss']
+  taxonomy = ['html', 'rss']
+  term = ['html', 'rss']
+
+[page]
+  nextprevinsectionsortorder = 'desc'
+  nextprevsortorder = 'desc'
+
+[pagination]
+  pagersize = 10
+  path = 'page'
+
+[params]
+  customcss = ['/css/custom.css']
+  dateformat = '2006-01-02'
+  defaulttheme = 'auto'
+  description = 'Hugo theme - LoveIt'
+  gitrepo = 'https://github.com/dillonzq/LoveIt'
+  images = ['/logo.png']
+  showimagecaption = true
+  title = 'LoveIt'
+
+  [params.analytics]
+    [params.analytics.fathom]
+
+    [params.analytics.goatcounter]
+
+    [params.analytics.google]
+
+    [params.analytics.plausible]
+
+    [params.analytics.yandexmetrica]
+
+  [params.app]
+    iconcolor = '#5bbad5'
+    themecolor = '#ffffff'
+    tilecolor = '#da532c'
+    title = 'LoveIt'
+
+  [params.author]
+    email = 'manley.perot#gmail.com'
+    name = 'Manley'
+
+  [params.cdn]
+    data = 'jsdelivr.yml'
+
+  [params.compatibility]
+
+  [params.cookieconsent]
+    [params.cookieconsent.content]
+
+  [params.footer]
+    author = true
+    copyright = true
+    custom = 'Powered by Hugo - theme DoIt.'
+    enable = true
+    since = 2019
+
+  [params.header]
+    desktopmode = 'fixed'
+    mobilemode = 'auto'
+
+    [params.header.title]
+      name = 'LoveIt'
+      pre = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>'
+
+  [params.home]
+    order = 'desc'
+    paginate = 10
+    rss = 10
+    sort = 'date'
+
+    [params.home.posts]
+      enable = true
+      paginate = 6
+
+    [params.home.profile]
+      avatarurl = '/images/avatar.webp'
+      enable = true
+      social = true
+      subtitle = '无明本是幻，见性亦是空。本来就是佛，只因习气遮。狂心顿歇后，无欲也无求。'
+      typeit = true
+
+  [params.imageprocessing]
+    maxwidth = 1280
+
+  [params.list]
+    dateformat = '2006-01-02'
+    paginate = 20
+    rss = 10
+
+  [params.page]
+    fontawesome = true
+    fraction = true
+    meta = ['author', 'date', 'tags', 'categories']
+    ruby = true
+    showsummary = true
+
+    [params.page.code]
+      copy = true
+      maxshownlines = 50
+
+      [params.page.code.render]
+        goat = true
+        mermaid = true
+
+    [params.page.comment]
+      enable = true
+
+      [params.page.comment.commento]
+
+      [params.page.comment.disqus]
+
+      [params.page.comment.facebook]
+        numposts = 10
+        width = '100%'
+
+      [params.page.comment.giscus]
+        category = 'Announcements'
+        darktheme = 'dark'
+        emitmetadata = '0'
+        inputposition = 'bottom'
+        lighttheme = 'light'
+        mapping = 'pathname'
+        reactionsenabled = '1'
+
+      [params.page.comment.gitalk]
+
+      [params.page.comment.telegram]
+        colorful = true
+        limit = 5
+
+      [params.page.comment.utterances]
+        darktheme = 'github-dark'
+        issueterm = 'pathname'
+        lighttheme = 'github-light'
+
+      [params.page.comment.valine]
+        appid = 'QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI'
+        appkey = 'WBmoGyJtbqUswvfLh6L8iEBr'
+        avatar = 'mp'
+        enable = true
+        highlight = true
+        pagesize = 10
+        recordip = true
+        serverurls = 'https://valine.hugoloveit.com'
+        visitor = true
+
+      [params.page.comment.waline]
+        emoji = ['https://unpkg.com/@waline/emojis@1.0.1/tw-emoji']
+        serverurl = 'https://love-it-waline.vercel.app'
+
+    [params.page.library]
+      [params.page.library.css]
+
+      [params.page.library.js]
+
+    [params.page.mapbox]
+      accesstoken = 'pk.eyJ1IjoiZGlsbG9uenEiLCJhIjoiY2s2czd2M2x3MDA0NjNmcGxmcjVrZmc2cyJ9.aSjv2BNuZUfARvxRYjSVZQ'
+      darkstyle = 'mapbox://styles/mapbox/dark-v10?optimize=true'
+      fullscreen = true
+      geolocate = true
+      lightstyle = 'mapbox://styles/mapbox/light-v10?optimize=true'
+      navigation = true
+      scale = true
+
+    [params.page.math]
+      copytex = true
+      mhchem = true
+
+    [params.page.seo]
+      [params.page.seo.publisher]
+        logourl = '/images/avatar.png'
+        name = 'xxxx'
+
+    [params.page.share]
+      diaspora = true
+      enable = true
+      facebook = true
+      hackernews = true
+      line = true
+      telegram = true
+      weibo = true
+
+    [params.page.toc]
+      auto = true
+      enable = true
+
+  [params.post]
+    meta = ['author', 'date', 'tags', 'categories']
+
+  [params.search]
+    absoluteurl = true
+    contentlength = 4000
+    highlighttag = 'em'
+    maxresultlength = 10
+    snippetlength = 50
+    type = 'algolia'
+
+    [params.search.algolia]
+      appid = 'GZT24PWKNT'
+      index = 'index'
+      searchkey = '634ab679e825b815de2663de38908f9d'
+
+  [params.section]
+    dateformat = '2006-01-02'
+    paginate = 20
+    rss = 10
+
+  [params.seo]
+    image = '/images/Apple-Devices-Preview.png'
+    thumbnailurl = '/images/screenshot.png'
+
+  [params.social]
+    bilibili = 'xxxx'
+    devto = 'xxxx'
+    douban = 'xxxx'
+    email = '"manley.perot#gmail.com"'
+    github = 'manleyzen.github.io'
+    phone = '10086'
+    steam = 'xxxx'
+    weibo = 'xxxx'
+    zhihu = 'xxxx'
+
+  [params.typeit]
+    cursorchar = '|'
+    cursorspeed = 1000
+    duration = -1
+    speed = 100
+
+  [params.verification]
+
+[permalinks]
+  [permalinks.page]
+    posts = ':filename'
+
+  [permalinks.section]
+
+  [permalinks.taxonomy]
+
+  [permalinks.term]
+    posts = ':filename'
+
+[privacy]
+  [privacy.disqus]
+
+  [privacy.googleanalytics]
+
+  [privacy.instagram]
+
+  [privacy.twitter]
+
+  [privacy.vimeo]
+
+  [privacy.x]
+
+  [privacy.youtube]
+
+[related]
+  threshold = 80
+
+  [[related.indices]]
+    name = 'keywords'
+    type = 'basic'
+    weight = 100
+
+  [[related.indices]]
+    name = 'date'
+    type = 'basic'
+    weight = 10
+
+  [[related.indices]]
+    name = 'tags'
+    type = 'basic'
+    weight = 80
+
+[security]
+  [security.exec]
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^git$', '^npx$', '^postcss$', '^tailwindcss$']
+    osenv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE)$']
+
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']
+
+[segments]
+
+[server]
+  [[server.redirects]]
+    from = '/**'
+    status = 404
+    to = '/404.html'
+
+[services]
+  [services.disqus]
+
+  [services.googleanalytics]
+
+  [services.instagram]
+
+  [services.rss]
+    limit = -1
+
+  [services.twitter]
+
+  [services.x]
+
+[sitemap]
+  changefreq = 'weekly'
+  filename = 'sitemap.xml'
+  priority = 0.5
+
+[taxonomies]
+  author = 'authors'
+  category = 'categories'
+  tag = 'tags'

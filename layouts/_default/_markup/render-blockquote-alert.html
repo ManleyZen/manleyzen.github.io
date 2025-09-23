@@ -1,0 +1,38 @@
+{{/* 渲染 Obsidian callout 为 LoveIt-style admonition */}}
+{{ $type := .AlertType | lower }}
+{{ $title := .AlertTitle }}
+{{ if not $title }}
+  {{ $title = title .AlertType }}
+{{ end }}
+
+{{/* 模拟 LoveIt $iconMap：根据类型映射 Font Awesome 类 */}}
+{{ $iconMap := dict 
+    "note" "fas fa-pencil-alt fa-fw" 
+    "abstract" "fas fa-list-ul fa-fw"
+    "info" "fas fa-info-circle fa-fw"
+    "tip" "fas fa-lightbulb fa-fw"
+    "success" "fas fa-check-circle fa-fw"
+    "question" "fas fa-question-circle fa-fw"
+    "warning" "fas fa-exclamation-triangle fa-fw"
+    "failure" "fas fa-times-circle fa-fw"
+    "danger" "fas fa-skull-crossbones fa-fw"
+    "bug" "fas fa-bug fa-fw"
+    "example" "fas fa-list-ol fa-fw"
+    "quote" "fas fa-quote-right fa-fw"
+}}
+
+{{ $iconClass := index $iconMap $type | default (index $iconMap "note") }}  {{/* 默认 note 图标 */}}
+
+<div class="details manley_admonition {{ $type }}">  {{/* 默认无 open = 折叠 */}}
+  <input type="checkbox" id="manley_admonition-{{ .Ordinal | default 0 }}" class="manley_admonition-checkbox">
+  <label for="manley_admonition-{{ .Ordinal | default 0 }}" class="details-summary manley_admonition-title">
+    <i class="icon {{ $iconClass }}" aria-hidden="true"></i>  {{/* 纯类名方式：无内容，由 FA 渲染；模拟主题 $iconMap */}}
+    {{ $title }}
+    <i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>  {{/* 右侧 toggle 图标 */}}
+  </label>
+  <div class="details-content">
+    <div class="manley_admonition-content">
+      {{ .Text | safeHTML }}
+    </div>
+  </div>
+</div>
