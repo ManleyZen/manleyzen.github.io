@@ -1,0 +1,20 @@
+{{- $pc := .Page.Site.Config.Privacy.Instagram -}}
+{{- if not $pc.Disable -}}
+<div class="instagram instagram-card">
+  {{- $id := .Get 0 -}}
+  {{- $hidecaption := .Get "hidecaption" | default false -}}
+  {{- $caption := not $hidecaption -}}
+  <blockquote class="instagram-media" data-instgrm-captioned="{{ if $caption }}true{{ else }}false{{ end }}" data-instgrm-permalink="https://www.instagram.com/p/{{ $id }}/" data-instgrm-version="14">
+    <a href="https://www.instagram.com/p/{{ $id }}/"></a>
+  </blockquote>
+  {{ if not $pc.DisableInlineCSS }}
+  <style>
+    .instagram { margin: 1rem 0; }
+    .instagram-card { border: 1px solid #e0e0e0; border-radius: 4px; padding: 1rem; background: #fff; }
+  </style>
+  {{ end }}
+  {{ if not $pc.DisableScript }}
+  <script async src="//www.instagram.com/embed.js"></script>
+  {{ end }}
+</div>
+{{- end -}}
