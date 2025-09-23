@@ -5,7 +5,7 @@
 # 构建输出目录（默认 public，可按需修改）
 /public/
 /resources/_gen/
-/assets/css/
+
 /assets/js/
 
 # 环境相关

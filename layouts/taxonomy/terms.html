@@ -18,7 +18,8 @@
             <div class="authors-card">
                 {{- range $terms -}}
                     {{- $term := .Term -}}
-                    {{- $pages := .Pages -}}
+                    {{- $pages := where .Pages "Params.hidden" "!=" true -}}
+                    {{- $pages = where $pages "Params.hiddenfromtaxonomy" "!=" true -}}
                     {{- with $.Site.GetPage "taxonomy" (printf "%v/%v" $type $term) -}}
                     <div class="card-item">
                         <div class="card-item-wrapper">
@@ -73,7 +74,7 @@
             <div class="categories-card">
                 {{- range $terms -}}
                     {{- $term := .Term -}}
-                    {{- $pages := .Pages -}}
+                    {{- $pages := where .Pages "Params.hidden" "!=" true -}} 
                     {{- with $.Site.GetPage "taxonomy" (printf "%v/%v" $type $term) -}}
                     <div class="card-item">
                         <div class="card-item-wrapper">
@@ -82,7 +83,7 @@
                                     <i class="far fa-folder fa-fw" aria-hidden="true"></i>&nbsp;{{ .Page.Title }}
                                 </a>
                             </h3>
-                            {{- range first 5 $pages -}}
+                            {{- range first 5 $pages -}} 
                                 <article class="archive-item">
                                     <a href="{{ .RelPermalink }}" class="archive-item-link">
                                         {{- .Title | emojify -}}
@@ -104,7 +105,10 @@
         {{- else if eq $taxonomies "tags" -}}
             <div class="tag-cloud-tags">
                 {{- range $.Site.Taxonomies.tags.ByCount -}}
-                    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <sup>{{ .Count }}</sup></a>
+                    {{- $visiblePages := where .Pages "Params.hidden" "!=" true -}}
+                    {{- if gt (len $visiblePages) 0 -}}
+                        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <sup>{{ len $visiblePages }}</sup></a>
+                    {{- end -}}
                 {{- end -}}
             </div>
         {{- end -}}
