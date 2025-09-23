@@ -47,7 +47,11 @@ yarn.lock
 
 # 如果主题是作为子模块或外部引用，可保留 themes/，但忽略内部 .git
 /themes/*/.git
-
+/themes/LoveIt/exampleSite/
+/themes/LoveIt/.env
+/themes/LoveIt/config*.yaml
+/themes/LoveIt/.DS_Store
+/themes/LoveIt/.vscode/
 # 临时草稿或未发布内容（可选）
 # content/drafts/
 
