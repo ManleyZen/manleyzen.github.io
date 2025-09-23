@@ -557,16 +557,19 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         appKey = "BqM7hOXoj23CZGD9RXSSEeu9"
         placeholder = ""
         avatar = "mp"
-        meta= ""
+        meta = ["nick", "mail"]   # 要求填写昵称和邮箱
+        requiredFields = ["nick", "mail"] # 必填项
         pageSize = 10
         # automatically adapt the current theme i18n configuration when empty
         # 为空时自动适配当前主题 i18n 配置
         lang = ""
-        visitor = true
+        visitor = false
         recordIP = true
         highlight = true
         enableQQ = false
-        serverURLs = "https://valine.hugoloveit.com"
+        verify = true 
+        serverURL = "https://api.leancloud.app"
+        # serverURLs = "https://valine.hugoloveit.com"
         # emoji data file name, default is "google.yml"
         # ["apple.yml", "google.yml", "facebook.yml", "twitter.yml"]
         # located in "themes/LoveIt/assets/lib/valine/emoji/" directory
