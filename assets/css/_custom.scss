@@ -1,0 +1,733 @@
+// callout样式定义
+.details.manley_admonition {
+    position: relative;
+    margin: 1rem 0;
+    padding: 0 0.75rem;
+    border-left: 0.25rem solid;
+    overflow: auto;
+    transition: all 0.3s ease;
+
+    .details-summary.manley_admonition-title {
+        font-weight: bold;
+        margin: 0 -0.75rem;
+        padding: 0.25rem 2.5rem 0.25rem 2.5rem;
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: background-color 0.3s ease;
+        border-bottom-width: 0 !important;
+        border: none !important;
+        border-right: 0 !important;
+        outline: none !important;
+        box-shadow: none !important;
+        background-clip: padding-box;
+        overflow: hidden;
+        background-color: inherit;
+
+        &:hover,
+        &:focus,
+        &:focus-within {
+            border-bottom-width: 0 !important;
+            border-right: 0 !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: inherit !important;
+            opacity: 1 !important;
+        }
+    }
+
+    .manley_admonition-content {
+        padding: 0.5rem 0;
+    }
+
+    i.icon {
+        font-size: 0.85rem;
+        position: absolute;
+        top: 0.6rem;
+        left: 0.4rem;
+        transition:
+            color 0.3s ease,
+            transform 0.3s ease;
+        z-index: 1;
+        line-height: 1;
+    }
+
+    i.details-icon {
+        position: absolute;
+        top: 0.6rem;
+        right: 0.6rem;
+        font-size: 0.85rem;
+        transition: transform 0.3s ease-in-out;
+        transform-origin: center;
+        z-index: 1;
+    }
+
+    /* 折叠状态：水平右箭头 */
+    .manley_admonition-checkbox:not(:checked) ~ .details-summary .details-icon {
+        transform: rotate(0deg);
+    }
+
+    /* 展开状态：90deg 成向下箭头 */
+    .manley_admonition-checkbox:checked ~ .details-summary .details-icon {
+        transform: rotate(90deg);
+    }
+
+    /* 折叠内容：max-height 平滑塌陷 */
+    .details-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition:
+            max-height 0.3s ease-out,
+            opacity 0.3s ease-out;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .manley_admonition-checkbox:checked ~ .details-content {
+        max-height: 1000px;
+        opacity: 1;
+    }
+
+    /* 类型特定样式（基于 $manley_admonition-color-list 一致） */
+    &.note {
+        background-color: rgba(68, 138, 255, 0.1);
+        border-left-color: #448aff;
+
+        .manley_admonition-title {
+            background-color: rgba(68, 138, 255, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(68, 138, 255, 0.1);
+        }
+
+        i.icon {
+            color: #448aff;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(68, 138, 255, 0.15) !important;
+        }
+    }
+
+    &.abstract {
+        background-color: rgba(0, 176, 255, 0.1);
+        border-left-color: #00b0ff;
+
+        .manley_admonition-title {
+            background-color: rgba(0, 176, 255, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(0, 176, 255, 0.1);
+        }
+
+        i.icon {
+            color: #00b0ff;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(0, 176, 255, 0.15) !important;
+        }
+    }
+
+    &.info {
+        background-color: rgba(83, 211, 230, 0.1);
+        border-left-color: #00b8d4;
+
+        .manley_admonition-title {
+            background-color: rgba(83, 211, 230, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(83, 211, 230, 0.1);
+        }
+
+        i.icon {
+            color: #00b8d4;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(83, 211, 230, 0.15) !important;
+        }
+    }
+
+    &.tip {
+        background-color: rgba(0, 191, 165, 0.1);
+        border-left-color: #00bfa5;
+
+        .manley_admonition-title {
+            background-color: rgba(0, 191, 165, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(0, 191, 165, 0.1);
+        }
+
+        i.icon {
+            color: #00bfa5;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(0, 191, 165, 0.15) !important;
+        }
+    }
+
+    &.manley {
+        background-color: rgba(255, 145, 0, 0.1);
+        border-left-color: #ff9100;
+
+        .manley_admonition-title {
+            background-color: rgba(255, 145, 0, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(255, 145, 0, 0.1);
+        }
+        .details-summary.manley_admonition-title i{
+            border-bottom: none !important;
+            background: none!important;
+        }
+        i.icon {
+            color: #ff9100;
+            background: none!important;
+        }
+        i:nth-child(2) {
+            font-size: 13px;
+            font-family: "PingFangSC-Light";
+            font-weight: light;
+            color: #6e7681 !important;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(255, 145, 0, 0.15) !important;
+        }
+
+        .manley_admonition-content p {
+            // color: #008070;
+            margin-left: 1.5em;
+            margin-right: 1.5em;
+            line-height: 2;
+            text-indent: 2em;
+        }
+        .manley_admonition-content p:last-child {
+            margin-bottom: 0.5em;
+        }
+    }
+
+    &.success {
+        background-color: rgba(0, 200, 83, 0.1);
+        border-left-color: #00c853;
+
+        .manley_admonition-title {
+            background-color: rgba(0, 200, 83, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(0, 200, 83, 0.1);
+        }
+
+        i.icon {
+            color: #00c853;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(0, 200, 83, 0.15) !important;
+        }
+    }
+
+    &.question {
+        background-color: rgba(100, 221, 23, 0.1);
+        border-left-color: #64dd17;
+
+        .manley_admonition-title {
+            background-color: rgba(100, 221, 23, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(100, 221, 23, 0.1);
+        }
+
+        i.icon {
+            color: #64dd17;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(100, 221, 23, 0.15) !important;
+        }
+    }
+
+    &.warning {
+        background-color: rgba(255, 145, 0, 0.1);
+        border-left-color: #ff9100;
+
+        .manley_admonition-title {
+            background-color: rgba(255, 145, 0, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(255, 145, 0, 0.1);
+        }
+
+        i.icon {
+            color: #ff9100;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(255, 145, 0, 0.15) !important;
+        }
+    }
+
+    &.failure {
+        background-color: rgba(255, 82, 82, 0.1);
+        border-left-color: #ff5252;
+
+        .manley_admonition-title {
+            background-color: rgba(255, 82, 82, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(255, 82, 82, 0.1);
+        }
+
+        i.icon {
+            color: #ff5252;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(255, 82, 82, 0.15) !important;
+        }
+    }
+
+    &.danger {
+        background-color: rgba(255, 82, 82, 0.1);
+        border-left-color: #ff1744;
+
+        .manley_admonition-title {
+            background-color: rgba(255, 82, 82, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(255, 82, 82, 0.1);
+        }
+
+        i.icon {
+            color: #ff1744;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(255, 82, 82, 0.15) !important;
+        }
+    }
+
+    &.bug {
+        background-color: rgba(255, 23, 68, 0.1);
+        border-left-color: #f50057;
+
+        .manley_admonition-title {
+            background-color: rgba(255, 23, 68, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(255, 23, 68, 0.1);
+        }
+
+        i.icon {
+            color: #f50057;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(255, 23, 68, 0.15) !important;
+        }
+    }
+
+    &.example {
+        background-color: rgba(101, 31, 255, 0.1);
+        border-left-color: #651fff;
+
+        .manley_admonition-title {
+            background-color: rgba(101, 31, 255, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(101, 31, 255, 0.1);
+        }
+
+        i.icon {
+            color: #651fff;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(101, 31, 255, 0.15) !important;
+        }
+    }
+
+    &.quote {
+        background-color: rgba(159, 159, 159, 0.1);
+        border-left-color: #9e9e9e;
+
+        .manley_admonition-title {
+            background-color: rgba(159, 159, 159, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: rgba(159, 159, 159, 0.1);
+        }
+
+        i.icon {
+            color: #9e9e9e;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(159, 159, 159, 0.15) !important;
+        }
+    }
+
+    /* 忽略的类型：caution, tldr, todo（保持原有样式） */
+    &.caution {
+        background-color: #fed7aa;
+        border-left-color: #f97316;
+
+        .manley_admonition-title {
+            background-color: rgba(254, 215, 170, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: #fed7aa;
+        }
+
+        i.icon {
+            color: #f97316;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(254, 215, 170, 0.15) !important;
+        }
+    }
+
+    &.tldr {
+        background-color: #d1fae5;
+        border-left-color: #10b981;
+
+        .manley_admonition-title {
+            background-color: rgba(209, 250, 229, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: #d1fae5;
+        }
+
+        i.icon {
+            color: #10b981;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(209, 250, 229, 0.15) !important;
+        }
+    }
+
+    &.todo {
+        background-color: #d1fae5;
+        border-left-color: #10b981;
+
+        .manley_admonition-title {
+            background-color: rgba(209, 250, 229, 0.25);
+        }
+
+        .manley_admonition-checkbox:checked ~ .details-summary.manley_admonition-title {
+            background-color: #d1fae5;
+        }
+
+        i.icon {
+            color: #10b981;
+        }
+
+        .details-summary.manley_admonition-title:hover {
+            background-color: rgba(209, 250, 229, 0.15) !important;
+        }
+    }
+
+    &:last-child {
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* 隐藏 checkbox */
+.manley_admonition-checkbox {
+    display: none;
+}
+
+/*========== 网页内容的样式修改 ==========*/
+body {
+    // font-family: "-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,fira sans,droid sans,helvetica neue,sans-serif";
+    font-family: "STSong", "Merriweather", "PT Serif", Georgia, "Times New Roman",Serif ;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+}
+.container{
+    line-height: 1.6;
+    color: #000000!important;
+}
+.single .single-title {
+    font-size: 1.8rem;
+}
+
+.archive .archive-item-date {
+    width: 7em !important;
+}
+
+
+article.page.single .single-title {
+    color: #2E2E2E;
+    position: relative;
+    line-height: 1.15em;
+    font-size: 2.25rem;
+    font-family: 'Open Sans','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+}
+
+article.page.single .single-title::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background: #f0f0f0;
+}
+article.page.single .content p{
+    color: #2E2E2E;
+    line-height: 1.6rem;
+    margin-bottom: 1.5em;
+    font-weight: 300 !important;
+    
+}
+article.page.single .content blockquote p:last-child{
+    margin-bottom: 0.5em;
+}
+article.page.single .content > h2 > .header-mark::before,
+article.page.single .content > h3 > .header-mark::before,
+article.page.single .content > h4 > .header-mark::before,
+article.page.single .content > h5 > .header-mark::before,
+article.page.single .content > h6 > .header-mark::before {
+    content: "";
+}
+article.page.single .content h2,
+article.page.single .content h3 {
+    margin-top: 2em;
+    display: block;
+    color: #2d96bd;
+    padding: 4px;
+    border-bottom: 1px solid #2E2E2E;;
+    font-family: 'Open Sans','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+    
+}
+article.page.single .content h4,
+article.page.single .content h5,
+article.page.single .content h6 {
+    padding: 4px;
+    margin-top: 1.5em;
+    display: block;
+    border-bottom: 0.5px dashed #999999;
+    font-family: 'Open Sans','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+}
+
+article.page.single .content h2:hover,
+article.page.single .content h3:hover,
+article.page.single .content h4:hover,
+article.page.single .content h5:hover,
+article.page.single .content h6:hover {
+    background-color: rgba(107,214,253,0.3);
+    color: #2d96bd;
+}
+
+
+article.page.single .content h2:hover::after {
+    content: "H2";
+    color: #2d96bd;
+    position: absolute;
+    font-size: 0.6rem;
+    width: auto;
+    height: auto;
+    line-height: 1;
+    margin-left: 1.5em;
+    margin-top: 0.5em;
+    border: 1px solid;
+    padding: 0px 2px !important;
+    border-radius: 3px;
+    text-indent: 0 !important;
+}
+
+article.page.single .content h3::after {
+    content: "H3";
+    color: #2d96bd;
+    position: absolute;
+    font-size: 0.6rem;
+    width: auto;
+    height: auto;
+    line-height: 1;
+    margin-left: 1.5em;
+    margin-top: 0.5em;
+    border: 1px solid;
+    padding: 0px 2px !important;
+    border-radius: 3px;
+    text-indent: 0 !important;
+}
+
+article.page.single .content h4:hover::after {
+    content: "H4";
+    color: #2d96bd;
+    position: absolute;
+    font-size: 0.6rem;
+    width: auto;
+    height: auto;
+    line-height: 1;
+    margin-left: 1.5em;
+    margin-top: 0.5em;
+    border: 1px solid;
+    padding: 0px 2px !important;
+    border-radius: 3px;
+    text-indent: 0 !important;
+}
+article.page.single .content h5:hover::after {
+    content: "H5";
+    color: #2d96bd;
+    position: absolute;
+    font-size: 0.6rem;
+    width: auto;
+    height: auto;
+    line-height: 1;
+    margin-left: 1.5em;
+    margin-top: 0.5em;
+    border: 1px solid;
+    padding: 0px 2px !important;
+    border-radius: 3px;
+    text-indent: 0 !important;
+}
+article.page.single .content h6:hover::after {
+    content: "H6";
+    color: #2d96bd;
+    position: absolute;
+    font-size: 0.6rem;
+    width: auto;
+    height: auto;
+    line-height: 1;
+    margin-left: 1.5em;
+    margin-top: 0.5em;
+    border: 1px solid;
+    padding: 0px 2px !important;
+    border-radius: 3px;
+    text-indent: 0 !important;
+}
+article.page.single .content blockquote {
+    border-left: 0.25rem solid #6bd6fd !important;
+}
+
+article.page.single .content b,
+article.page.single .content strong:not(:has(i,em,mark)) { 
+    font-weight: bolder!important;
+    font-family: 'PingFangSC-Medium';
+}
+article.page.single .content i:not(.fas):not(.far),
+article.page.single .content em {
+    color: #2d96bd;
+}
+article.page.single .content mark {
+    background-color: #2d96bd;
+    padding: 2px 4px;
+    color:#ffffff;
+    font-weight: bolder;
+}
+mark{
+    background-color: rgba(0, 176, 255, 0.2);
+}
+article.page.single .content em>mark{
+    background-color: #2d96bd;
+    padding: 0px 4px;
+    font-weight: bolder;
+    color: ffffe7;
+}
+
+article.page.single .content em>strong{
+    font-weight: bolder;
+    color: #2d96bd;
+    padding: 0px 4px;
+    background-color: #ffffe7;
+}
+article.page.single .content strong>mark{
+    font-weight: bolder;
+    padding: 0px 4px ;
+    text-decoration: none !important;
+    // background-color: #ae652c;
+    // color: #ffffe7 ;
+}
+article.page.single .content img{
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 100%;
+    height: auto;    
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);    
+}
+article.page.single .content figure {
+    display: table;  /* 使 figure 宽度由内容（img）决定 */
+    text-align: center;    /* 可选：让文字居中 */    
+    margin: 0 auto;
+}
+
+
+article.page.single .content figcaption{
+    font-size: 0.875em;
+    background-color: #f0f0f0; /* 设置背景色 */
+    padding: 2px;              /* 可选：增加内边距 */
+    margin: 0.5rem 0 1rem 0;           /* 清除默认 margin */
+    width: 100%;               /* 与父容器（即 img 宽度）一致 */
+    box-sizing: border-box;    /* 保证 padding 不撑宽 */
+    color: #2d96bd
+}
+
+.home[data-home=posts] .summary .post-footer .post-tags a:hover {
+  color: #ef3982;
+}
+.code-block .code-title i{
+    border: none !important;
+    color: #2d96bd;
+}
+i.far {
+    border: none !important;    
+}
+
+.admonition-title i{
+    border: none !important;
+}
+#header-desktop .header-wrapper .menu .menu-item{
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+}
+#toc-auto{
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+    font-weight: 300;
+}
+#toc-auto .toc-content a.active{
+    font-weight: 400;
+}
+.header-title{
+    font-family: Impact;
+}
+.header-title a{
+    font-size: 1.2em;
+    display: block;
+}
+#header-desktop .header-wrapper .header-title .header-title-post{
+    font-size: 15px;
+}
+.home[data-home=posts] .summary .single-title{
+    font-family: 'Open Sans','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+    font-weight: bold;
+}
+.home[data-home=posts] .summary .content{
+    color: #2E2E2E;
+}
