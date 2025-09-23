@@ -640,7 +640,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # Waline 评论系统设置 (https://waline.js.org/)
       [params.page.comment.waline]
         enable = true
-        serverURL = "https://vercel-walinejs-no2qxz7wi-manleyzens-projects.vercel.app/"
+        serverURL = "https://vercel-walinejsorg.vercel.app/"
         # automatically adapt the current theme i18n configuration when empty
         # 为空时自动适配当前主题 i18n 配置
         lang = "zh-CN"
