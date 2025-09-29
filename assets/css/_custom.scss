@@ -477,7 +477,17 @@ body {
 .archive .archive-item-date {
     width: 7em !important;
 }
-
+// 内容摘要
+article.page.single .post-summary{
+    padding:1em 0.5em 1em 1em;
+    margin: 2em 0;;
+    border-left: 4px solid #6bd6fd;
+    // font-weight: 500;
+    color: #2d96bd;
+    // background-color: rgba(255, 145, 0, 0.15);
+    background-color: rgba(107,214,253,0.3);
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+}
 
 article.page.single .single-title {
     color: #2E2E2E;

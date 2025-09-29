@@ -1,0 +1,5 @@
+{{ $pdf := .Get 0 }}
+{{ $height := .Get 1 | default "600px" }}
+<div style="width: 100%; height: '{{ $height }}';">
+  <iframe src="/pdfjs/web/viewer.html?file={{ $pdf | relURL }}#view=Fit" width="100%" height="{{ $height }}" frameborder="0"></iframe>
+</div>

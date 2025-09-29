@@ -46,6 +46,7 @@ yarn.lock
 # themes/your-theme-name/
 
 # 如果主题是作为子模块或外部引用，可保留 themes/，但忽略内部 .git
+/themes/
 /themes/*/.git
 /themes/LoveIt/exampleSite/
 /themes/LoveIt/.env
