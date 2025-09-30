@@ -129,6 +129,8 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # 默认不开启图片标题
   imageCaption = false
 
+  googleAnalytics = "G-N6TTRX7MWW"
+
   [params.post]
   meta = ["author", "date", "tags", "categories"]
 
@@ -834,7 +836,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # privacy of the Google Analytics (can also be configured in params.analytics.google)
   # Google Analytics 相关隐私设置 (也能在 params.analytics.google 配置)
   [privacy.googleAnalytics]
-    # ...
+    disable = false          # 是否完全禁用 GA（设为 true 则不加载脚本）
+    anonymizeIP = true       # 是否匿名化用户 IP（推荐设为 true）
+    respectDoNotTrack = true # 如果用户浏览器开启“请勿追踪”，则不加载 GA
+    useSessionStorage = false # 是否使用 sessionStorage 代替 cookie（GA4 默认用 cookie）
+
   [privacy.twitter]
     # ...
   [privacy.youtube]
