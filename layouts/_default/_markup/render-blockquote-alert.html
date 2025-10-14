@@ -23,8 +23,8 @@
 
 {{ $iconClass := index $iconMap $type | default (index $iconMap "note") }}  {{/* 默认 note 图标 */}}
 
-<div class="details manley_admonition {{ $type }}">  {{/* 默认无 open = 折叠 */}}
-  <input type="checkbox" id="manley_admonition-{{ .Ordinal | default 0 }}" class="manley_admonition-checkbox">
+<div class="details manley_admonition {{ $type }} open">  {{/* 默认 open = 展开 */}}
+  <input type="checkbox" id="manley_admonition-{{ .Ordinal | default 0 }}" class="manley_admonition-checkbox" checked>
   <label for="manley_admonition-{{ .Ordinal | default 0 }}" class="details-summary manley_admonition-title">
     <i class="icon {{ $iconClass }}" aria-hidden="true"></i>  {{/* 纯类名方式：无内容，由 FA 渲染；模拟主题 $iconMap */}}
     {{ $title }}
