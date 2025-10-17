@@ -6,7 +6,6 @@
 /public/
 /resources/_gen/
 
-/assets/js/
 
 # 环境相关
 .env
