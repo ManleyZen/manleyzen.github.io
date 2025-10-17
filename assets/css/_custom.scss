@@ -680,11 +680,11 @@ article.page.single .content strong>mark{
 }
 article.page.single .content img{
     display: block;
-    margin: 0 auto;
+    margin: 1.5em auto;
     width: auto;
-    max-width: 100%;
+    max-width: 85%;
     height: auto;    
-    border: 1px solid #ddd;
+    border: 1px solid #999;
     border-radius: 4px;
     // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);    
 }
@@ -699,8 +699,8 @@ article.page.single .content figcaption{
     font-size: 0.875em;
     background-color: #f0f0f0; /* 设置背景色 */
     padding: 2px;              /* 可选：增加内边距 */
-    margin: 0.5rem 0 1rem 0;           /* 清除默认 margin */
-    width: 100%;               /* 与父容器（即 img 宽度）一致 */
+    margin: 0.5em auto;           /* 清除默认 margin */
+    width: 85%;               /* 与父容器（即 img 宽度）一致 */
     box-sizing: border-box;    /* 保证 padding 不撑宽 */
     color: #2d96bd
 }
