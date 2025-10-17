@@ -851,7 +851,7 @@ var Theme = /*#__PURE__*/ (function () {
                     var $page = document.getElementsByClassName('page')[0];
                     var rect = $page.getBoundingClientRect();
                     $toc.style.left = ''.concat(rect.left + rect.width + 20, 'px');
-                    $toc.style.maxWidth = ''.concat($page.getBoundingClientRect().left + 100, 'px');
+                    $toc.style.maxWidth = ''.concat($page.getBoundingClientRect().left + 110, 'px');
                     $toc.style.visibility = 'visible';
 
                     var $tocLinkElements = $tocCore.querySelectorAll('a:first-child');
