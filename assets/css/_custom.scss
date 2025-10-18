@@ -704,9 +704,11 @@ article.page.single .content figcaption{
     box-sizing: border-box;    /* 保证 padding 不撑宽 */
     color: #2d96bd
 }
-.page.home  article.single.summary div.content{
+.page.home article.single.summary div.content,
+.page.home article.single.summary div.content p{
     color: #2E2E2E;
     font-weight: 300 !important;
+    font-size:14px!important;
 }
 .footnotes hr{
     display: none;
@@ -719,6 +721,15 @@ article.page.single .content figcaption{
     font-size: 14px!important;
     color: #2d96bd;
     font-weight: 400;
+}
+.home[data-home=posts] .summary{
+    padding: 1em;
+}
+.home[data-home=posts] .summary:hover{
+    background-color: #f0f0f05f;
+}
+.home[data-home=posts] .summary:hover h1.single-title a{
+    color:#2d96bd;
 }
 .home[data-home=posts] .summary .post-footer .post-tags a:hover {
   color: #ef3982;
